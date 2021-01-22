@@ -42,8 +42,7 @@ FILES = ft_memset \
 		ft_putendl_fd \
 		ft_putnbr_fd \
 		ft_strtok \
-		ft_strcmp \
-		get_next_line \
+		ft_strcmp 
 
 FILES_B = 	ft_lstnew \
 	  		ft_lstadd_front \
