@@ -1,27 +1,31 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pceccoli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 16:04:57 by pceccoli          #+#    #+#             */
+/*   Updated: 2021/01/25 14:14:30 by pceccoli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void	display_nbr(int n, int fd)
-{
-	if (n >= 10)
-		display_nbr(n / 10, fd);
-	write(fd, &"0123456789"[n % 10], 1);
-}
-
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (fd < 0)
-		return ;
 	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
 	{
-		write(fd, "-2147483648", 11);
-		return ;
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
 	}
-	if (n < 0)
+	else if (n >= 10)
 	{
-		write(fd, "-", 1);
-		n *= -1;
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
 	}
-	display_nbr(n, fd);
+	else
+		ft_putchar_fd(n + '0', fd);
 }

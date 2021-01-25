@@ -1,20 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pceccoli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 15:58:45 by pceccoli          #+#    #+#             */
+/*   Updated: 2021/01/21 15:58:48 by pceccoli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-long int ft_abs(long int nbr)
+long int	ft_abs(long int nbr)
 {
-    if (nbr < 0)
-        return (-nbr);
-    return (nbr),
+	return ((nbr < 0) ? -nbr : nbr);
 }
 
-int	ft_len(long int nbr)
+int			ft_len(long int nbr)
 {
 	int		len;
 
-	if (nbr <= 0)
-        len = 1;
-    else
-        len = 0;
+	len = (nbr <= 0) ? 1 : 0;
 	while (nbr != 0)
 	{
 		nbr = nbr / 10;
@@ -23,17 +30,14 @@ int	ft_len(long int nbr)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	int		len;
 	int		sign;
 	char	*c;
 
-	if (n < 0) 
-        sign = -1;
-    else
-        sign = 1;
-    len = ft_len(n);
+	sign = (n < 0) ? -1 : 1;
+	len = ft_len(n);
 	c = (char *)malloc(sizeof(char) * len + 1);
 	if (c == NULL)
 		return (0);
